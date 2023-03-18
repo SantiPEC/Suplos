@@ -1,14 +1,25 @@
 <?php
-$servername = "localhost";
-$database = "suplos";
-$username = "root";
-$password = "";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+
+class conexion{
+private $servername;
+private $database;
+private $username;
+private $password;
+
+public function __construct(){
+    $this->servername = "localhost";
+    $this->database = "suplos";
+    $this->username = "root";
+    $this->password = "";
 }
-echo "Connected successfully";
-mysqli_close($conn);
+
+function conectar(){
+    $this->conexion = new mysqli(this->servername,this->username,this->database,this->password);
+    $this->conexion-> set_charset("utf8");
+}
+
+function cerrar(){
+    this->conexion->close();
+}
+}
 ?>

@@ -2,32 +2,26 @@
 
     class models_crearProceso{
         private $conexion;
-        public $data;
+        
+        function __construct(){
+            require_once "conexion.php";
+            $this->conexion = new conexion();
+            $this->conexion-> conectar();
 
+        }
         function listarActividad(){
-            $conn = conectar();     
-    
-            $sql  = "SELECT id, nombre_Producto FROM producto";
-            $query=mysqli_query($conn,$sql);
+            $sql = "SELECT nombre_Producto FROM producto";
+            $arreglo = array();
 
-            $i = 0;
-            $data = [];
+            if ($consulta = this->conexion->conexion->query($sql)) {
+                while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                    $arreglo[]=$consulta_VU;
+                }
 
-            while ($row=mysql_fetch_array($query)) {
-                
-                $data[$i] = $row;
-				$i++;
+                return $arreglo;
+                $this->conexion->cerrar()
             }
-            
-            if($data>0){
-                return $data;
-            }else{
-                return 0;
-            }
-
-    
     }
-
 }
 
-    
+?>

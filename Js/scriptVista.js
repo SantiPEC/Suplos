@@ -35,27 +35,26 @@ function verFormulario(id){
         $('#formDocumentacionOferta').show();
     }
 
-
 }
 
-function listarActividad(){
+function listarActividad( ){
     console.log("entra");
     $.ajax({
-        "url": "../controllers/controller_listar_Actividad.php",
-        "type": "POST"
+        url: '../controllers/controller_listar_Actividad.php',
+        type: 'POST',
+
     }).done(function(resp){
         var data = JSON.parse(resp);
-        console.log(data);
-        var cadena="";
-        if(data.length>0){
-            cadena+="<option value='0'>Seleccionar</option>"; 
-            for(var i=0; i < data.length; i++){
-                cadena+="<option value ='"+data[i]['id']+"'>"+" - "+data[i]['nombre_Producto']+"</option>";
-            } 
+        var cadena ="";
+        if (data.length>0) {
+            for (var i = 0; i < data.length; i++) {
+                cadena +="<option value='" + data[i][0]+"'>" + data[i][1]+"</option>";
+                
+            }
+            $("#selectActividad".html(cadena));
+        } else {
+            cadena +="<option value=''>'NO SE ENCONTRARON REGISTROS'</option>";
             $("#selectActividad").html(cadena);
-            $("#selectVerActividad").html(cadena);
-        }else{
-            cadena+="<option value =''>No se encontraron registros</option>"; 
         }
     })
 }

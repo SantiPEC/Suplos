@@ -166,7 +166,7 @@
                                                     <label>Actividad</label>
                                                     <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
-                                                        <select class="form-control" id="selectActividad" aria-describedby="basic-addon2">
+                                                        <select class="form-control select-picker" id="selectActividad" aria-describedby="basic-addon2">
                                                         </select>                                                 
                                                     </div>
                                                 </div>
@@ -270,7 +270,9 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+    </body>
 
+</html>
     <!-- jQuery -->
     <script src="../template/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -304,14 +306,15 @@
     <script src="../template/dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../template/dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    
     <script src="../template/dist/js/pages/dashboard.js"></script>
     <script src="../Js/scriptVista.js"></script>
     <script src="../template/plugins/bs-stepper/js/bs-stepper.min.js"></script>
 
     <script>
-        listarActividad();
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+            listarActividad();
+        });
+        
     </script>
-</body>
-
-</html>
