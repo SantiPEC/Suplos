@@ -14,12 +14,12 @@ public function __construct(){
 }
 
 function conectar(){
-    $this->conexion = new mysqli(this->servername,this->username,this->database,this->password);
+    $this->conexion = new mysqli($this->servername,$this->username,$this->database,$this->password);
     $this->conexion-> set_charset("utf8");
 }
 
 function cerrar(){
-    this->conexion->close();
+    $this->conexion->close();
 }
 }
 ?>
