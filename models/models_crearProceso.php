@@ -5,23 +5,35 @@
         
         function __construct(){
             require_once "conexion.php";
-            $this->conexion = new conexion();
-            $this->conexion-> conectar();
 
         }
         function listarActividad(){
-            $sql = "SELECT nombre_Producto FROM producto";
-            $arreglo = array();
+            $h = new conexion();
+            $h->conectar();
+            $sql =$h->consulta("SELECT id,nombre_Producto FROM producto");
 
-            if ($consulta = this->conexion->conexion->query($sql)) {
-                while ($consulta_VU = mysqli_fetch_array($consulta)) {
-                    $arreglo[]=$consulta_VU;
-                }
+            while ($consulta_VU = mysqli_fetch_array($sql)) {
+                $arreglo[]=$consulta_VU;
+            }
 
                 return $arreglo;
-                $this->conexion->cerrar()
+        }
+        function guardaProceso($objeto,$actividad,$descripcion,$moneda,$presupuesto,$fechaInicio,
+        $horaInicio,$fechaCierre,$horaCierre){
+            $h = new conexion();
+            $h->conectar();
+            $insert =$h->consulta("INSERT INTO proceso(objeto,actividad,descripcion,moneda,presupuesto,fechaInicio,
+            horaInicio,fechaCierre,horaCierre) VALUES ('$objeto',$actividad,'$descripcion',$moneda,$presupuesto,'$fechaInicio',
+            '$horaInicio','$fechaCierre','$horaCierre')");
+            
+
+            if($insert){
+                return 1;
+            }else{
+                return 0;
             }
+        }
     }
-}
+
 
 ?>

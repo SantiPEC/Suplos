@@ -48,13 +48,75 @@ function listarActividad( ){
         var cadena ="";
         if (data.length>0) {
             for (var i = 0; i < data.length; i++) {
-                cadena +="<option value='" + data[i][0]+"'>" + data[i][1]+"</option>";
+                cadena +="<option value='" + data[i]['id']+"'>" + data[i]['nombre_Producto']+"</option>";
                 
             }
-            $("#selectActividad".html(cadena));
+            $("#selectActividad").html(cadena);
         } else {
             cadena +="<option value=''>'NO SE ENCONTRARON REGISTROS'</option>";
             $("#selectActividad").html(cadena);
         }
     })
+}
+function guardaProceso(){
+    
+    var objeto = $("#inputObjeto").val();
+    var actividad = $("#selectActividad").val();
+    var descripcion = $("#inputDescripcion").val();
+    var moneda = $("#selectMoneda").val();
+    var presupuesto = $("#inputPrespuesto").val();
+    var fechaInicio = $("#dateFechaInicio").val();
+    var horaInicio = $("#timeHoraInicio").val();
+    var fechaCierre =$("#dateFechaFin").val();
+    var horaCierre = $("#timeHoraFin").val();
+
+
+    if( objeto == '' ||
+        actividad == '0' ||
+        descripcion == '' ||
+        moneda == '0' ||
+        presupuesto == '' ||
+        fechaInicio == '' ||
+        horaInicio == '' ||
+        fechaCierre == '' ||
+        horaCierre == '' 
+
+
+        ){
+            return swal.fire("Mensaje De Advertencia", "llene los campos vacios", "warning");
+        }
+    
+
+    $.ajax({
+        "url": "../controllers/controller_guardar_Actividad.php",
+        "type": "POST",
+        "data":{
+            objeto:objeto,
+            actividad:actividad,
+            descripcion:descripcion,
+            moneda:moneda,
+            presupuesto:presupuesto ,
+            fechaInicio:fechaInicio,
+            horaInicio:horaInicio,
+            fechaCierre:fechaCierre,
+            horaCierre:horaCierre,
+        }
+    }).done(function(resp){
+        console.log(resp);
+        if(resp > 0){
+            if(resp==1){
+                
+            $("#modalRegistro").modal('hide');
+            Swal.fire("Mensaje De Confirmacion",'Registro realizado', "success").then((value)=>{
+                table_cliente.ajax.reload();
+                
+            });
+        }else{
+            Swal.fire("Mensaje De Advertencia",'El proceso ya se encuentra creado', "warning");
+        }
+        }else{
+            Swal.fire("Mensaje De Error",'No se pudo completar el Registro', "error");
+        }
+    })
+
 }
