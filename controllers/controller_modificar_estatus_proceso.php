@@ -1,0 +1,18 @@
+<?php
+    require '../models/models_cambio_estado.php';
+
+    $MU = new models_cambio_estado();
+
+    $id = htmlspecialchars($_POST['id'],ENT_QUOTES,'UTF-8');
+    $nuevoEstado = htmlspecialchars($_POST['nuevoEstado'],ENT_QUOTES,'UTF-8');
+
+    //funcion para cambiar de estado si la fecha actual es mayor a la cierre ESTADO = EVALUADO
+    $proceso = $MU->verHoraCierre($id);
+    if ($proceso['fechaCierre']<date("Y-m-d hh-mm-ss")) {
+        $nuevoEstado = '3';
+    }
+
+    $consulta = $MU->cambiarEstatus($id,$nuevoEstado);
+    echo $consulta;
+
+?>

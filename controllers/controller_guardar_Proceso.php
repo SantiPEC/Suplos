@@ -1,7 +1,7 @@
 <?php
     require '../models/models_crearProceso.php';
 
-    $MU = new models_crearProceso();
+    $MU = new models_crear_Proceso();
     
     $objeto = htmlspecialchars($_POST['objeto'],ENT_QUOTES,'UTF-8');
     $actividad = htmlspecialchars($_POST['actividad'],ENT_QUOTES,'UTF-8');
