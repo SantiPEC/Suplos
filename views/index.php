@@ -98,7 +98,7 @@
                                             <div class="bs-stepper-header" role="tablist">
                                                 <!-- your steps here -->
                                                 <div class="step active" data-target="#informacionBasica-part"
-                                                    onclick="verFormulario(1)">
+                                                    onclick="verFormularioRegistro(1)">
                                                     <button type="button" class="step-trigger" role="tab"
                                                         aria-controls="informacionBasica-part"
                                                         id="informacionBasica-part-trigger" aria-selected="true">
@@ -110,7 +110,7 @@
                                                 <!--CRONOGRAMA-->
                                                 <div class="line"></div>
                                                 <div class="step" data-target="#cronograma-part"
-                                                    onclick="verFormulario(2)">
+                                                    onclick="verFormularioRegistro(2)">
                                                     <button type="button" class="step-trigger" role="tab"
                                                         aria-controls="cronograma-part" id="cronograma-part-trigger"
                                                         aria-selected="false">
@@ -121,7 +121,7 @@
                                                 <!-- Documentacion peticion de oferta -->
                                                 <div class="line"></div>
                                                 <div class="step" data-target="#documentacionOferta-part"
-                                                    onclick="verFormulario(3)">
+                                                    onclick="verFormularioRegistro(3)">
                                                     <button type="button" class="step-trigger" role="tab"
                                                         aria-controls="documentacionOferta-part"
                                                         id="documentacionOferta-part-trigger" aria-selected="false">
@@ -189,8 +189,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!--<button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>-->
-
                                                 </div>
                                             </div>
 
@@ -242,10 +240,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!--<button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>-->
-
                                                 </div>
-
                                             </div>
                                             <div class="bs-stepper-content" id="formDocumentacionOferta"
                                                 style="display:none">
@@ -257,7 +252,8 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label>Ingresa los archivos requeridos para el proceso</label>
+                                                                <label>Ingresa los archivos requeridos para el
+                                                                    proceso</label>
                                                                 <input multiple type="file" class="form-control"
                                                                     id="inputVariosArchivos"><br>
                                                                 <button id="btnSubirArchivos"
@@ -265,11 +261,8 @@
                                                             </div>
                                                             <div class="alert alert-info" id="estado"></div>
                                                         </div>
-                                                        </div>
-                                                    
-                                                        
+                                                    </div>
                                                 </div>
-                                                <!--<button class="btn btn-primary" onclick="stepper.next()">Siguiente</button>-->
                                             </div>
                                         </div>
                                     </div>
@@ -283,22 +276,96 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    <footer class="main-footer">
-        <strong>Santiago Posada Espinosa <a
-                href="https://www.linkedin.com/in/santiago-posada-espinosa-50b2a8210/">linkedin</a>.</strong>
-        <div class="float-right d-none d-sm-inline-block"><b>2023</b>
-        </div>
-    </footer>
+        <div class="modal fade bd-example-modal-xl" id="modalConsulta" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Procesos / Evento participación cerrada</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- STEPPER -->
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <div class="bs-stepper linear">
+                                            <div class="bs-stepper-content" id="formConsulta">
+                                                <!-- FORMULARIO DE DATOS -->
+                                                <div id="informacionBasica-part" class="content active dstepper-block"
+                                                    role="tabpanel" aria-labelledby="informacionBasica-part-trigger">
+                                                    <h4>Búsqueda</h4><br>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>ID Cerrada</label>
+                                                                <input class="form-control" name="IdCerrada"
+                                                                    id="inputObjeto" style="width:100%; heigth: 40px;" placeholder="Número id procesos / eventos">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Objeto / Descripción</label>
+                                                                <input class="form-control" name="objetoDecripcion"
+                                                                    id="inputObjetoDescripcionConsulta"
+                                                                    style="width:100%; heigth: 60px;" placeholder="Objeto / Descripción">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Comprador</label>
+                                                                <input class="form-control" name="compradorProceso"
+                                                                    id="inputComprador"
+                                                                    style="width:100%; heigth: 60px;" placeholder="Responsable Evento">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label>Estado</label>
+                                                                <div class="input-group mb-3">
+                                                                    <span class="input-group-text" id="basic-addon2"><i
+                                                                            class="fas fa-search"></i></span>
+                                                                    <select class="form-control" id="selectEstadoProceso"
+                                                                        aria-describedby="basic-addon2"
+                                                                        style="width:80%; heigth: 60px;">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                       
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+
+
+                                        </div>
+                                    </div>
+                                    <center><button type="button" class="btn btn-info"
+                                            onclick="buscarProceso()">Buscar</button>
+                                        <button type="button" class="btn btn-success" onclick="generarExcel()">Generar
+                                            Excel</button>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="main-footer">
+            <strong>Santiago Posada Espinosa <a
+                    href="https://www.linkedin.com/in/santiago-posada-espinosa-50b2a8210/">linkedin</a>.</strong>
+            <div class="float-right d-none d-sm-inline-block"><b>2023</b>
+            </div>
+        </footer>
     </div>
-    <!-- ./wrapper -->
+   
 </body>
 
 </html>
@@ -314,8 +381,6 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="../template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
 <script src="../template/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="../template/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
 <script src="../template/plugins/jqvmap/jquery.vmap.min.js"></script>
 <script src="../template/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
@@ -334,9 +399,6 @@ $.widget.bridge('uibutton', $.ui.button)
 <!-- AdminLTE App -->
 <script src="../template/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../template/dist/js/demo.js"></script>
-
-<script src="../template/dist/js/pages/dashboard.js"></script>
 <script src="../Js/scriptVista.js"></script>
 <script src="../template/plugins/bs-stepper/js/bs-stepper.min.js"></script>
 <script src="../template/plugins/select2/js/select2.min.js"></script>

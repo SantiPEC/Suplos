@@ -1,5 +1,5 @@
 function accederEventos(){
-    $("#eventos").html('<button type="button" class="btn btn-primary" data-toggle="modal" onclick="modalRegistro();">Crear</button><button type="button" class="btn btn-primary" id="copiarProceso">Copiar</button><button type="button" class="btn btn-primary" id="consultarProceso">Consultar</button>')
+    $("#eventos").html('<button type="button" class="btn btn-primary" data-toggle="modal" onclick="modalRegistro();">Crear</button><button type="button" class="btn btn-primary" id="copiarProceso">Copiar</button><button type="button" class="btn btn-primary" id="consultarProceso" onclick="modalConsulta();">Consultar</button>')
     $('#acceder').hide();
 }
 function modalRegistro(){
@@ -13,7 +13,12 @@ function modalRegistro(){
           window.stepper = new Stepper(document.querySelector('.bs-stepper'))
       });
 }
-function verFormulario(id){
+
+function modalConsulta(){
+    $("#modalConsulta").modal({backdrop:'static',keyboard:false})
+    $("#modalConsulta").modal('show');
+}
+function verFormularioRegistro(id){
 
     //alert(id);
 
@@ -83,7 +88,11 @@ function guardaProceso(){
 
 
         ){
-            return swal.fire("Mensaje De Advertencia", "llene los campos vacios", "warning");
+            return swal.fire("Mensaje De Advertencia", "Porfavor llene los campos vacios", "warning");
+        }
+        
+        if (fechaInicio>fechaCierre) {
+            return swal.fire("Mensaje De Advertencia", "La Fecha de Inicio no puede ser mayor a la Fecha de Finalizacion", "warning");
         }
     
 
