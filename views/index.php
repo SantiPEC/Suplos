@@ -60,6 +60,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-3 col-6">
+                            <center>
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <h4>PROCESOS/EVENTOS</h4>
@@ -73,6 +74,7 @@
                                 <a class="small-box-footer" id="acceder" onclick="accederEventos()">Acceder<i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
+                            </center>
                         </div>
                     </div>
                 </div>
