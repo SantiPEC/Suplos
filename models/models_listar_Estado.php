@@ -7,6 +7,7 @@
             require_once "conexion.php";
 
         }
+        //consulta que transmite al select de la vista los estados disponibles
         function listarEstado(){
             $h = new conexion();
             $h->conectar();

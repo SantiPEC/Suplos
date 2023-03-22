@@ -7,6 +7,7 @@
             require_once "conexion.php";
 
         }
+        //consulta que transmite al select de la vista las monedas disponibles
         function listarMoneda(){
             $h = new conexion();
             $h->conectar();

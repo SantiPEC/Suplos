@@ -7,6 +7,7 @@
             require_once "conexion.php";
 
         }
+         //Funcion para guardar los datos en la tabla procesos 
         function guardaProceso($objeto,$actividad,$descripcion,$moneda,$presupuesto,$fechaInicio,
         $horaInicio,$fechaCierre,$horaCierre){
             $h = new conexion();
@@ -16,6 +17,19 @@
             '$horaInicio','$fechaCierre','$horaCierre')");
             
 
+            if($insert){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+         /*Funcion para insertar los archivos en la tabla documentacion
+            la cual va tambien con el id del proceso al que pertenece el archivo cargado */
+        function insertArchivos($idProceso,$archivo){
+            $h = new conexion();
+            $h->conectar();
+            $insert =$h->consulta("INSERT INTO documentacion (idProceso,nombreArchivo) VALUES ($idProceso,'$archivo')");
+            
             if($insert){
                 return 1;
             }else{

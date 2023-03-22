@@ -8,7 +8,7 @@
     <title>SUPLOS</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../template/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -27,9 +27,13 @@
     <link rel="stylesheet" href="../template/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="../template/plugins/summernote/summernote-bs4.min.css">
+    <!-- SweetAlert -->
     <link rel="stylesheet" href="../template/plugins/sweetalert2/sweetalert2.min.css">
+    <!-- Bs-Stepper -->
     <link rel="stylesheet" href="../template/plugins/bs-stepper/css/bs-stepper.min.css">
+    <!-- Select2 -->
     <link rel="stylesheet" href="../template/plugins/select2/css/select2.min.css">
+    <!-- DATATABLES -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
 
@@ -62,19 +66,19 @@
                     <div class="row">
                         <div class="col-lg-3 col-6">
                             <center>
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h4>PROCESOS/EVENTOS</h4>
-                                    <div id="eventos">
-                                        <p>Modal de registro de procesos</p>
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h4>PROCESOS/EVENTOS</h4>
+                                        <div id="eventos">
+                                            <p>Modal de registro de procesos</p>
+                                        </div>
                                     </div>
+                                    <div class="icon">
+                                        <i class="ion-social-dropbox"></i>
+                                    </div>
+                                    <a class="small-box-footer" id="acceder" onclick="accederEventos()">Acceder<i
+                                            class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                                <div class="icon">
-                                    <i class="ion-social-dropbox"></i>
-                                </div>
-                                <a class="small-box-footer" id="acceder" onclick="accederEventos()">Acceder<i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                            </div>
                             </center>
                         </div>
                     </div>
@@ -94,7 +98,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <!-- STEPPER -->
+                    <!-- Se inicializa el area del STEPPER -->
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
@@ -102,7 +106,7 @@
                                     <div class="card-body p-0">
                                         <div class="bs-stepper linear">
                                             <div class="bs-stepper-header" role="tablist">
-                                                <!-- your steps here -->
+                                                <!-- parte superior - stepper -->
                                                 <div class="step active" data-target="#informacionBasica-part"
                                                     onclick="verFormularioRegistro(1)">
                                                     <button type="button" class="step-trigger" role="tab"
@@ -123,21 +127,11 @@
                                                         <span class="bs-stepper-label">Cronograma</span>
                                                     </button>
                                                 </div>
-                                                <!-- Documentacion peticion de oferta -->
-                                                <div class="line"></div>
-                                                <div class="step" data-target="#documentacionOferta-part"
-                                                    onclick="verFormularioRegistro(3)">
-                                                    <button type="button" class="step-trigger" role="tab"
-                                                        aria-controls="documentacionOferta-part"
-                                                        id="documentacionOferta-part-trigger" aria-selected="false">
-                                                        <span class="bs-stepper-circle">3</span>
-                                                        <span class="bs-stepper-label">Documentación petición de
-                                                            oferta</span>
-                                                    </button>
-                                                </div>
+
                                             </div>
+                                             <!-- Inicializa Formulario de informacion basica -->
                                             <div class="bs-stepper-content" id="formInfoBasica">
-                                                <!-- FORMULARIO DE DATOS -->
+                                                <!-- FORMULARIO DE INGRESO DE DATOS DE INFORMACION BASICA -->
                                                 <div id="informacionBasica-part" class="content active dstepper-block"
                                                     role="tabpanel" aria-labelledby="informacionBasica-part-trigger">
                                                     <h2>Información Básica</h2><br>
@@ -204,10 +198,10 @@
                                                 </div>
                                             </div>
 
-                                            <!--<Form cronograma>-->
+                                            <!--Inicializa Formulario de cronograma-->
                                             <div class="bs-stepper-content" id="formCronograma" style="display:none">
 
-                                                <!-- FORMULARIO DE DATOS -->
+                                                <!-- FORMULARIO DE DATOS DE CRONOGRAMA -->
                                                 <div id="informacionBasica-part" class="content active dstepper-block"
                                                     role="tablist" aria-labelledby="informacionBasica-part-trigger">
                                                     <h2>Cronograma</h2><br>
@@ -254,37 +248,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="bs-stepper-content" id="formDocumentacionOferta"
-                                                style="display:none">
-                                                <!-- FORMULARIO DE DATOS -->
-                                                <div id="documentacionOferta-part" class="content active dstepper-block"
-                                                    role="tablist" aria-labelledby="documentacionOferta-part-trigger">
-                                                    <h4>Contenido - Documentación petición de ofertas / Términos y
-                                                        condiciones del Proceso</h4><br>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                <label>Ingresa los archivos requeridos para el
-                                                                    proceso</label>
-                                                                <form method="post"
-                                                                    enctype="multipart/form-data"
-                                                                    id="formCargarArchivos">
-                                                                    <input multiple type="file" class="form-control"
-                                                                        id="inputVariosArchivos" name="archivos[]"><br>
-                                                                </form>
-                                                                <button id="btnSubirArchivos" class="btn btn-primary"
-                                                                    onclick="subirArchivos();">Agregar
-                                                                    Contenido</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
+                            <!--Boton guardar proceso-->
                             <center><button type="button" class="btn btn-success"
                                     onclick="guardaProceso()">Guardar</button></center>
                         </div>
@@ -292,10 +262,12 @@
                 </div>
             </div>
         </div>
+        <!--Inicializa modal de consultas-->
         <div class="modal fade bd-example-modal-xl" id="modalConsulta" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <!--titulo-->
                         <h5 class="modal-title">Procesos / Evento participación cerrada</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -309,7 +281,7 @@
                                     <div class="card-body p-0">
                                         <div class="bs-stepper linear">
                                             <div class="bs-stepper-content" id="formConsulta">
-                                                <!-- FORMULARIO DE DATOS -->
+                                                <!-- INPUTS QUE SE USAN PARA FILTRAR LA DATATABLE-->
                                                 <div id="informacionBasica-part" class="content active dstepper-block"
                                                     role="tabpanel" aria-labelledby="informacionBasica-part-trigger">
                                                     <h4>Búsqueda</h4><br>
@@ -317,16 +289,19 @@
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>ID Cerrada</label>
-                                                                <input type="number" class="form-control" name="IdCerrada"
-                                                                    id="inputIdCerrada" style="width:100%; heigth: 40px;"
-                                                                    placeholder="Número id procesos / eventos" data-index="1">
+                                                                <input type="number" class="form-control"
+                                                                    name="IdCerrada" id="inputIdCerrada"
+                                                                    style="width:100%; heigth: 40px;"
+                                                                    placeholder="Número id procesos / eventos"
+                                                                    data-index="1">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
+                                                                <!--input de consulta de objeto - descripcion en la datatable-->
                                                                 <label>Objeto / Descripción</label>
-                                                                <input type="text"class="form-control" name="ObjetoDescripcion"
-                                                                    id="inputObjetoDescripcion"
+                                                                <input type="text" class="form-control"
+                                                                    name="ObjetoDescripcion" id="inputObjetoDescripcion"
                                                                     style="width:100%; heigth: 60px;"
                                                                     placeholder="Objeto / Descripción">
                                                             </div>
@@ -349,21 +324,24 @@
                                                                 <div class="input-group mb-3">
                                                                     <span class="input-group-text" id="basic-addon2"><i
                                                                             class="fas fa-search"></i></span>
+                                                                            <!--select de estados que consulta en la datatable-->
                                                                     <select class="form-control"
                                                                         id="selectEstadoProceso"
+                                                                        onChange="dataTableConsultar();"
                                                                         aria-describedby="basic-addon2"
-                                                                        style="width:80%; heigth: 60px;"  data-index="11">
+                                                                        style="width:80%; heigth: 60px;">
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
 
                                                     </div>
-
+                                                    <!--Boton de buscar que muestra la datatable o la oculta 
+                                                        ademas de habilitar los inputs para busqueda-->
                                                     <button type="button" class="btn btn-info"
                                                         onclick="dataTableConsultar();ocultarDataTableConsultar();">Buscar</button>
                                                 </div>
-                                                
+                                                <!--Body de la datatable-->
                                                 <div class="mt-5" id="ocultar" style="display:none;">
                                                     <table id="tabla_consulta_Procesos"
                                                         class="display responsive nowrap" style="width:100%">
@@ -371,9 +349,14 @@
                                                             <tr>
                                                                 <th>id</th>
                                                                 <th>Objeto</th>
+                                                                <th>Actividad</th>
                                                                 <th>Descripción</th>
+                                                                <th>Moneda</th>
+                                                                <th>Presupuesto</th>
                                                                 <th>Fecha Inicio</th>
+                                                                <th>Hora Inicio</th>
                                                                 <th>Fecha Cierre</th>
+                                                                <th>Hora Cierre</th>
                                                                 <th>Estado</th>
                                                                 <th>Acciones</th>
                                                             </tr>
@@ -393,8 +376,8 @@
             </div>
         </div>
     </div>
+    <!--modal que se abre al presionar el boton de "subir Documentacion-->
     <div class="modal fade" id="modalCargaArchivos" role="dialog">
-
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header modal-primary">
@@ -402,7 +385,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <!-- FORMULARIO REGISTRO DE CONTENIDO-->
+                    <!-- FORMULARIO INGRESO DE CONTENIDO-->
                     <form class="form">
                         <div class="row">
                             <div id="documentacionOferta-part" class="content active dstepper-block" role="tablist"
@@ -414,13 +397,15 @@
                                         <div class="form-group">
                                             <label>Ingresa los archivos requeridos para el
                                                 proceso</label>
-                                            <form action="subirArchivos.php" method="post" enctype="multipart/form-data"
-                                                id="formCargarArchivos">
+                                                <!--Inicializa formulario con protocolo enctype="multipart/form-data" para envio de archivos-->
+                                            <form method="post" enctype="multipart/form-data" id="formCargarArchivos">
                                                 <input multiple type="file" class="form-control"
                                                     id="inputVariosArchivos" name="archivos[]"><br>
+                                                <input type="hidden" name="idPro" id="idPro">
                                             </form>
-                                            <button id="btnSubirArchivos" class="btn btn-primary"
-                                                onclick="subirArchivos();">Agregar Contenido</button>
+                                            <!--boton de subir archivos-->
+                                            <button id="btnSubirArchivos" class="btn btn-primary" type="button">Agregar
+                                                Contenido</button>
                                         </div>
                                     </div>
                                 </div>
@@ -428,13 +413,15 @@
                         </div>
                     </form>
                 </div>
+                <!--Bonton de cerrar el modal-->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i
-                            class="fa fa-close"><b>&nbsp;Close</b></i></button>
+                            class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
                 </div>
             </div>
         </div>
     </div>
+    <!--Footer con nombre del dev y link a linkedin-->
     <footer class="main-footer">
         <strong>Santiago Posada Espinosa <a
                 href="https://www.linkedin.com/in/santiago-posada-espinosa-50b2a8210/">linkedin</a>.</strong>
@@ -442,18 +429,11 @@
         </div>
     </footer>
     </div>
-
-
-
-    
 </body>
-
 </html>
 
 <!-- jQuery -->
 <script src="../template/plugins/jquery/jquery.min.js"></script>
-
-
 <!-- jQuery UI 1.11.4 -->
 <script src="../template/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -462,7 +442,6 @@ $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
 <script src="../template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 <!-- ChartJS -->
 <script src="../template/plugins/chart.js/Chart.min.js"></script>
 <!-- JQVMap -->
@@ -482,19 +461,24 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="../template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../template/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
+<!-- llamar al javaScript -->
 <script src="../Js/scriptVista.js"></script>
+<!-- script de bs-stepper -->
 <script src="../template/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<!-- script de select2-->
 <script src="../template/plugins/select2/js/select2.min.js"></script>
+<!--script de sweetAlert  -->
 <script src="../template/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- script de  datatables-->
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
 
+<!-- scripts que inicializan el select2 en los selects de la vista-->
 <script>
 $(document).ready(function() {
     $('#selectMoneda').select2();

@@ -1,6 +1,7 @@
 <?php
 
 class conexion{
+    //se define la base de datos y el usuario
     private $localhost = "localhost";    
     private $usuario = "root";
     private $password = "";
@@ -26,15 +27,5 @@ class conexion{
         }
         return $resultado; 
     }
-    #__________________________
-    // METODO PARA CONTAR EL NUMERO DE FILAS DEVUELTAS
-    // INPUT: $r
-    // OUTPUT: numero de filas 
-    function numero_de_filas($result){
-    if(!is_resource($result)) 
-                return false;
-    return mysqli_num_rows($result);
-    }   
-
 }
 ?>
