@@ -73,9 +73,7 @@
                                             <p>Modal de registro de procesos</p>
                                         </div>
                                     </div>
-                                    <div class="icon">
-                                        <i class="ion-social-dropbox"></i>
-                                    </div>
+                                    
                                     <a class="small-box-footer" id="acceder" onclick="accederEventos()">Acceder<i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
