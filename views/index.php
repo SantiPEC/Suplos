@@ -364,7 +364,7 @@
                                                 <div class="mt-5" id="ocultar" style="display:none;">
                                                     <table id="tabla_consulta_Procesos"
                                                         class="display responsive nowrap" style="width:100%">
-                                                        <thead class="bg-black">
+                                                        <thead class="bg-info">
                                                             <tr>
                                                                 <th>id</th>
                                                                 <th>Objeto</th>
