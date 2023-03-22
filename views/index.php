@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
 
+
 </head>
 
 <body class="sidebar-collapse">
@@ -265,7 +266,7 @@
                                                             <div class="form-group">
                                                                 <label>Ingresa los archivos requeridos para el
                                                                     proceso</label>
-                                                                <form action="subirArchivos.php" method="post"
+                                                                <form method="post"
                                                                     enctype="multipart/form-data"
                                                                     id="formCargarArchivos">
                                                                     <input multiple type="file" class="form-control"
@@ -316,18 +317,18 @@
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>ID Cerrada</label>
-                                                                <input type="text" class="form-control" name="IdCerrada"
-                                                                    id="inputObjeto" style="width:100%; heigth: 40px;"
+                                                                <input type="number" class="form-control" name="IdCerrada"
+                                                                    id="inputIdCerrada" style="width:100%; heigth: 40px;"
                                                                     placeholder="Número id procesos / eventos" data-index="1">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="form-group">
                                                                 <label>Objeto / Descripción</label>
-                                                                <input class="form-control" name="objetoDecripcion"
-                                                                    id="inputObjetoDescripcionConsulta"
+                                                                <input type="text"class="form-control" name="ObjetoDescripcion"
+                                                                    id="inputObjetoDescripcion"
                                                                     style="width:100%; heigth: 60px;"
-                                                                    placeholder="Objeto / Descripción" data-index="2">
+                                                                    placeholder="Objeto / Descripción">
                                                             </div>
                                                         </div>
                                                         <!--no definido en la prueba-->

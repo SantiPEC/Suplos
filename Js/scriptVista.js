@@ -212,18 +212,21 @@ function ocultarDataTableConsultar() {
     }
 }
 function dataTableConsultar() {
+    
     table_consultar = $('#tabla_consulta_Procesos').DataTable({
+        
         dom: 'Bfrtip',
         buttons: ['excel'],
+        "searching": true,
         "ordering": true,
         "paging": true,
-        "tabIndex": 0,
-        "searching": { "regex": true },
         "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
         "pageLength": 10,
         "destroy": true,
         "async": true,
         "processing": false,
+        "lengthChange": false,
+        "info": false,
 
         "ajax": {
             "url": "../controllers/controller_listar_procesos.php",
@@ -255,11 +258,16 @@ function dataTableConsultar() {
         ],
         select: true
     });
+    $('.dataTables_filter').hide();
+ 
+    $('#inputIdCerrada').on('keyup', function() {
+        table_consultar.search(this.value).draw();
 
-    $("#inputObjeto").keyup(function () {
-        table_consultar.column($(this).data('index')).search(this.value).draw();
-    })
+    });
 
+    $('#inputObjetoDescripcion').on('keyup', function() {
+        table_consultar.search(this.value).draw();
+    });
 }
 
 //Funcion boton de DataTable de cambio de estado "PUBLICAR" 
@@ -312,7 +320,7 @@ function modificar_estatus_proceso(id, nuevoEstado) {
         }
     })
 }
-// FUNCION PARA EDITAR REGISTRO
+// FUNCION PARA EDITAR REGISTRO - pendiente
 $('#tabla_consulta_Procesos').on('click', '.subirArchivos', function () {
 
     //levantar modal
